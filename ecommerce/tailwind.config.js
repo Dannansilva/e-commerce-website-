@@ -3,12 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors:{
-
-      }
+      colors: {},
+      fontFamily: {
+        primary: ['Roboto', "sans - serif"],
+      },
     },
   },
   plugins: [],
 };
-
-
