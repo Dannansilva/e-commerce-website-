@@ -1,6 +1,7 @@
 import { data } from 'autoprefixer';
 import React, { useEffect, useState } from 'react'
 import { FaFilter } from "react-icons/fa"
+import Cards from '../../components/Cards';
 const Products = () => {
     const [products,setProducts]= useState([]);
     useEffect(() => {
@@ -46,7 +47,7 @@ const Products = () => {
                 
             </div>
         </div>
-
+        <Cards/>
         </div>
     </div>
   )
