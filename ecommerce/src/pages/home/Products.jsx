@@ -47,7 +47,7 @@ const Products = () => {
                 
             </div>
         </div>
-        <Cards/>
+        <Cards filteredItems={products}/>
         </div>
     </div>
   )
