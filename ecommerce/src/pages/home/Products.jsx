@@ -4,6 +4,9 @@ import { FaFilter } from "react-icons/fa"
 import Cards from '../../components/Cards';
 const Products = () => {
     const [products,setProducts]= useState([]);
+    const [filteredItems,setFilteredItems] =useState([]);
+    const [selectedCategory,setSelectedCategory] = useState("all");
+    const [sortOption ,setSortOption] = useState("default");
     useEffect(() => {
         const fetchData = async () => {
             try{
@@ -11,13 +14,25 @@ const Products = () => {
                 const data = await respose.json();
                 // console.log(data)
                 setProducts(data)
+                setFilteredItems(data)
             }catch(error){
                 console.log("ERROR FETCHING DATA:",error)
             }
         }
         fetchData();
     },[])
-    console.log(products)
+    // console.log(products)
+    //filtering funtion
+    const filterItems = (category) => {
+        const filtered = category === "all" ? (products) : products.filter((item) => item.category ===category);
+        setFilteredItems(filtered);
+        setSelectedCategory(category);
+    }
+    //show all products
+    const showAll =() =>{
+        setFilteredItems(products);
+        selectedCategory('all');
+    }
   return (
     <div  className=' max-w-screen-2xl container mx-auto xl:px-28 px-4 mb-12'>
         <h2 className=' text-3xl font-semibold capitalize text-center my-8'>Or subscribe to the newsletter</h2>
@@ -26,10 +41,10 @@ const Products = () => {
         <div className=' flex flex-col md:flex-row flex-wrap md:justify-between items-center space-y-3 mb-8'>
             {/* all buttons */}
             <div className=' flex flex-row justify-start md:items-center md:gap-8 gap-4 flex-wrap'>
-                <button>All Products</button>
-                <button>T shirts</button>
-                <button>Hoodies</button>
-                <button>Bag</button>
+                <button onClick={showAll}>All Products</button>
+                <button onClick={()=>filterItems("Dress") }>Clothing</button>
+                <button onClick={()=>filterItems("Hoodies")}>Hoodies</button>
+                <button onClick={()=>filterItems("Bag")}>Bag</button>
             </div>
             {/* sorting optins */}
             <div className=' flex justify-end rounded-sm mb-4 gap-2'>
@@ -47,7 +62,7 @@ const Products = () => {
                 
             </div>
         </div>
-        <Cards filteredItems={products}/>
+        <Cards filteredItems={filteredItems}/>
         </div>
     </div>
   )
