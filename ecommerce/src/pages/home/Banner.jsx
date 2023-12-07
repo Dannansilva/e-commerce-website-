@@ -10,6 +10,7 @@ const Banner = () => {
           <img src={Bannerimg} alt="" />{" "}
         </div>
         {/* text */}
+        
         <div className=" md:w-1/2">
           <h1 className=" text-5xl font-light mb-5">Collections</h1>
           <p className=" text-xl mb-7">

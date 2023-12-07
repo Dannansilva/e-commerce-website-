@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
 const SingleProducts = () => {
@@ -45,7 +45,18 @@ const SingleProducts = () => {
                     <FaStar/>
                 </span>
               <p className=" text-xl text-red-500 font-semibold sm:text-2xl">${price}</p>
+              <div className=" mt-4">
+              <div className=" text-left flex flex-col gap-2 w-full">
+                <label className=" font-semibold">Quantity</label>
+                <input type="number" name="price" id="price" defaultValue={1} required className=" border border-e-gray-300 text-sm font-semibold mb-1 max-w-full w-full outline-none rounded-md m-0 py-3 px-4 md:py-3 md:px-4 focus:border-red-500"/>
+              </div>
+              <div>
+                <button className=" flex justify-center items-center gap-2 w-full py-3 px-4bg bg-red-500 text-white font-bold border border-red-500 rounded-md ease-in-out duration-150 shadow-slate-600 hover:bg-white hover:text-red-500 lg:m-0 md:px-6"><span>Confirmed Order</span> <FaArrowAltCircleRight/> </button>
+              </div>
             </div>
+            </div>
+            
+
           </div>
         </div>
       </div>
